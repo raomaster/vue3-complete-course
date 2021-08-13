@@ -7,7 +7,7 @@ const app = Vue.createApp({
 
         <div 
             v-for="number in numbers" 
-            v-bind:class="isEven(number) ? 'blue' : 'red'"
+            v-bind:class="getClass(number)"
         >
             <div> {{ number }} 
                 <span v-if="isEven(number)">
@@ -46,7 +46,10 @@ const app = Vue.createApp({
     },
     isEven(number) {
         return number % 2 === 0
-    }
+    },
+    getClass(number) {
+        return this.isEven(number) ? 'blue' : 'red'
+    },
   },
 });
 app.mount("#app");
