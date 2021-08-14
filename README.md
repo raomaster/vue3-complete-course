@@ -17,3 +17,11 @@ Run vite
 
     yarn vite src
 
+Others Projects:
+
+Form-Validation
+
+    npm install
+    yarn vite --config vite.config.js form-validation
+
+
