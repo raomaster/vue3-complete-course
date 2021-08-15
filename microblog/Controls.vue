@@ -1,11 +1,10 @@
 <template>
-  <button>Likes {{ post.likes }}</button>
+  <button @click="click" >Likes {{ post.likes }}</button>
 
   <hash-tag
     v-for="hashtag in post.hashtags"
     :key="hashtag"
     :hashTag="hashtag" 
-    @setHashtag="setHashtag" 
   >
 
   </hash-tag>
@@ -13,9 +12,9 @@
 
 <script>
 import hashTag from './HashTag.vue'
+import { store } from './store.js'
 
 export default {
-  emits: ['setHashtag'],
   components: {
     hashTag
   },
@@ -28,14 +27,15 @@ export default {
       type: String
     }
   },
+  setup(props) {
+    const click = () => {
+      store.incrementLike(props.post)
+    }
 
-  setup(props, ctx) {
-    const setHashtag = (hashtag) => {
-      ctx.emit('setHashtag', hashtag)
-        
-      }
 
-    return { setHashtag }
+    return {
+      click
+    }
   }
 }
 </script>

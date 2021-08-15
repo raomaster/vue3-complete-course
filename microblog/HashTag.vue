@@ -5,7 +5,7 @@
 </template>
 
 <script>
-
+import { store } from './store.js'
 
 export default {
   props: {
@@ -16,9 +16,8 @@ export default {
   setup(props, ctx) {
 
     const setHashtag = () => {
-      ctx.emit('setHashtag', props.hashTag)
-        
-      }
+      store.setHashtag(props.hashTag)    
+    }
 
     return { setHashtag }
   }
